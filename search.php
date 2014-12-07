@@ -27,7 +27,9 @@
         {
 
             echo "The Url is:<a href='http://en.wikipedia.org/wiki?curid=".$myResults[$i]['id']."'>http://en.wikipedia.org/wiki?curid=".$myResults[$i]['id']."</a>";
+            echo "<button onclick='hideTR()'>Show Summary</button>"
             echo "<div class='a'>";
+            echo "this is shit";
             echo "</div>";
 			//do it in naive way
 			//each time Got a docid 
@@ -54,8 +56,19 @@
     function showValue(newValue){
         document.getElementById("range").innerHTML=newValue;
     }
+    var flag = true;
     function hideTR(){
-        //change the CSS style property to 'none' for hiding, or 'inline' to show    
-        document.getElementById('hideThis').style.display='none';}
+        //change the CSS style property to 'none' for hiding, or 'inline' to show 
+        if(flag)   
+        {
+            document.getElementById('hideThis').style.display='inline';
+            flag = false;
+        }            
+        else
+        {
+            document.getElementById('hideThis').style.display='none';
+            flag = true;
+        }
+    }
 </script>
 </html>
