@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
 .a{
     display:none;
 }
+</style>
+</head>
 <body>
 	<form name="input" action="search.php" method="get">
 	Search: <input type="text" name="query">
     <input type="submit" value="Submit">
-    <input type="range" name="slider1" min="0.0" max="1.0" step="0.01">
+    <input type="range" name="slider1" min="0.0" max="1.0" value="0.50" step="0.01" onchange="showValue(this.value)">
+    <span id="range">0.50</span>
 	</form>
 
 <?php
@@ -45,7 +50,10 @@
 ?>
 
 </body>
-<script>
+    <script>
+    function showValue(newValue){
+        document.getElementById("range").innerHTML=newValue;
+    }
     function hideTR(){
         //change the CSS style property to 'none' for hiding, or 'inline' to show    
         document.getElementById('hideThis').style.display='none';}
