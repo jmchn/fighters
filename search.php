@@ -29,7 +29,22 @@
             echo "The Url is:<a href='http://en.wikipedia.org/wiki?curid=".$myResults[$i]['id']."'>http://en.wikipedia.org/wiki?curid=".$myResults[$i]['id']."</a>";
             echo "<button onclick='hideTR()'>Show Summary</button>"
             echo "<div class='a'>";
-            echo "this is shit";
+            $query = mysqli_query($con,"select * from imageUrl where id ='".$myResults[$i]['id']."'");
+            $result=mysqli_fetch_array($query);
+            echo "<img src='".$result['url']."'>";
+            echo "categorys:<br>";
+            $query = mysqli_query($con,"select * from category where eecs485_article_id ='".$myResults[$i]['id']."'");
+            while($result=mysqli_fetch_array($query))
+            {
+                echo $result['eecs485_article_category']."<br>";
+            }
+            $query = mysqli_query($con,"select * from info where eecs485_article_id ='".$myResults[$i]['id']."'");
+            while($result=mysqli_fetch_array($query))
+            {
+                echo $result['eecs485_article_summary']."<br>";
+            }
+
+        
             echo "</div>";
 			//do it in naive way
 			//each time Got a docid 
